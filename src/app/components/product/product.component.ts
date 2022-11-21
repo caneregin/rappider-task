@@ -2,6 +2,9 @@ import { ProductResponseModel } from './../../models/productResponseModel';
 import { Component, OnInit } from '@angular/core';
 import { Product } from 'src/app/models/product';
 import { HttpClient } from "@angular/common/http"
+import { select, Store } from '@ngrx/store';
+import { selectProducts } from 'src/app/store/products.selector';
+import { invokeProductsAPI } from 'src/app/store/products.action';
 
 @Component({
   selector: 'app-product',
@@ -9,23 +12,12 @@ import { HttpClient } from "@angular/common/http"
   styleUrls: ['./product.component.css']
 })
 export class ProductComponent implements OnInit {
-  products:Product[] = []
-  productResponseModel:ProductResponseModel={
-    products : this.products
-  }
-  apiUrl = "https://dummyjson.com/products"
-  constructor(private httpClient: HttpClient) { 
+
+  constructor(private store: Store) {
 
   }
+  products$ = this.store.pipe(select(selectProducts))
   ngOnInit(): void {
-    this.getProducts()
+    this.store.dispatch(invokeProductsAPI())
   }
-
-  getProducts() {
-    this.httpClient.get<ProductResponseModel>(this.apiUrl).subscribe((response) => {
-      this.products = response.products
-      console.log(this.products)
-    })
-  }
-
 }
