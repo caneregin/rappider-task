@@ -14,7 +14,6 @@ import { invokeProductsAPI } from 'src/app/store/products.action';
 export class ProductComponent implements OnInit {
 
   constructor(private store: Store) {
-
   }
   products$ = this.store.pipe(select(selectProducts))
   ngOnInit(): void {
