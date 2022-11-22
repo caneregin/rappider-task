@@ -1,5 +1,35 @@
-<table>
-    <tr *ngFor="let product of products$ | async">
-        <td>{{product.title}}</td>
-    </tr>
-</table>
+
+    <nz-table #basicTable>
+        <thead>
+          <tr>
+            <th class="th-class">id</th>
+            <th class="th-class">title</th>
+            <th class="th-class">description</th>
+            <th class="th-class">price</th>
+            <th class="th-class">discountPercentage</th>
+            <th class="th-class">rating</th>
+            <th class="th-class">brand</th>
+            <th class="th-class">category</th>
+            <th class="th-class">thumbnail</th>
+            <th class="th-class">images</th>
+            <th class="th-class">salesAmount</th>
+            <th class="th-class">salesDescription</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let product of products$ | async">
+            <td>{{ product.id }}</td>
+            <td>{{ product.title }}</td>
+            <td>{{ product.description }}</td>
+            <td>{{ product.price }}</td>
+            <td>{{ product.discountPercentage }}</td>
+            <td>{{ product.rating }}</td>
+            <td>{{ product.brand }}</td>
+            <td>{{ product.category }}</td>
+            <td><img src="{{ product.thumbnail }}" /></td>
+            <td><img src="{{ product.images[0] }}" /></td>
+            <td>{{ product.salesAmount }}</td>
+            <td>{{ product.salesDescription }}</td>
+          </tr>
+        </tbody>
+      </nz-table>

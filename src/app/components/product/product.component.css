@@ -1,0 +1,15 @@
+table {
+  width: 100%;
+}
+
+img {
+  height: 5rem;
+  width: 5rem;
+  border-radius: 1rem;
+}
+*{
+  text-align: center;
+}
+.th-class{
+  text-align: center;
+}

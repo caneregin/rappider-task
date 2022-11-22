@@ -16,6 +16,9 @@ export class ProductComponent implements OnInit {
   constructor(private store: Store) {
   }
   products$ = this.store.pipe(select(selectProducts))
+  //displayedColumns: string[] = ['id', 'title', 'description', 'price','discountPercentage', 'rating', 'stock', 'brand','category', 'thumbnail', 'images', 'salesAmount',"salesDescription"];
+  dataSource = this.products$;
+  
   ngOnInit(): void {
     this.store.dispatch(invokeProductsAPI())
   }
