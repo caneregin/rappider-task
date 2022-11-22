@@ -1,7 +1,7 @@
 import { state } from "@angular/animations";
 import { Injectable } from "@angular/core";
 import { Actions, createEffect, ofType } from "@ngrx/effects";
-import { switchMap, map } from "rxjs";
+import { switchMap, map, pipe } from "rxjs";
 import { ProductsService } from "../products.service";
 import { invokeProductsAPI, productsFetchAPISuccess } from "./products.action";
 
@@ -15,7 +15,7 @@ export class ProductsEffects {
             switchMap(() => {
                 return this.productService.get()
                     .pipe(
-                        map((data) => productsFetchAPISuccess({allProducts: data.products }))
+                        map((data) => productsFetchAPISuccess({ allProducts: data.products }))
                     )
             })
         ))
