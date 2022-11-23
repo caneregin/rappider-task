@@ -2,7 +2,7 @@ import { map } from 'rxjs';
 import { createReducer, on } from "@ngrx/store";
 import { Product } from "../models/product";
 import { ProductResponseModel } from "../models/productResponseModel";
-import { productsFetchAPISuccess, updateProduct } from "./products.action";
+import { ByIdproductsFetchAPISuccess, productsFetchAPISuccess, updateProduct } from "./products.action";
 
 export const initialState: ReadonlyArray<Product> = []
 
@@ -24,4 +24,14 @@ export const productReducer = createReducer(
     })
     return updateProducts
   })
-);
+  );
+  export const productReducerById = createReducer(
+    initialState,
+  on(ByIdproductsFetchAPISuccess, (state, { productById }) => {
+    productById = { ...productById, salesAmount: 0 }
+    productById = { ...productById, salesDescription: "" }
+    const arr = []
+    arr.push(productById)
+    return arr;
+  })
+  )

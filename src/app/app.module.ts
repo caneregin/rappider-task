@@ -19,7 +19,12 @@ import { NzModalModule } from 'ng-zorro-antd/modal';
 import { NzPopoverModule } from 'ng-zorro-antd/popover';
 import { NzFormModule } from 'ng-zorro-antd/form';
 import { NzInputModule } from 'ng-zorro-antd/input';
+import { Routes } from '@angular/router';
 registerLocaleData(en);
+
+const appRoute:Routes=[
+  {path:"Components/product/:id",component:ProductComponent}
+]
 
 @NgModule({
   declarations: [
@@ -40,7 +45,7 @@ registerLocaleData(en);
     NzPopoverModule,
     NzFormModule,
     NzInputModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ],
   providers: [
     { provide: NZ_I18N, useValue: en_US }

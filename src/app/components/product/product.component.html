@@ -31,32 +31,34 @@
         <button nz-button nz-popover nzType="primary" nzPopoverTitle="Sales Description" nzPopoverContent="{{ product.salesDescription }}">{{ product.salesAmount }}</button>
         </td>
       <td>
-        <button nz-button (click)="showModal()"><span>{{ product.title }}</span></button>
+        <button (click)="selectedInput($event)" type="{{ product.id }}" nz-button (click)="showModal()"><span>{{ product.title }}</span></button>
       </td>
     </tr>
   </tbody>
 </nz-table>
-<nz-modal [(nzVisible)]="isVisible" nzTitle="show"
+<nz-modal [(nzVisible)]="isVisible" nzTitle="Detail"
           (nzOnOk)="handleOk()">
           <ng-container *nzModalContent>
-            <form nz-form [formGroup]="validateForm" class="login-form" (ngSubmit)="submitForm()">
+            <form nz-form [formGroup]="validateForm" class="login-form" (ngSubmit)="submitForm()"
+            *ngFor="let product of products2$ | async">
+              id:{{product.id}} title:{{product.title}}
               <nz-form-item>
                 <nz-form-control nzErrorTip="Please input your username!">
                   <nz-input-group nzPrefixIcon="user">
-                    <input type="text" nz-input formControlName="userName" placeholder="Username" />
+                    <input type="text" nz-input formControlName="userName" placeholder="Sales Amount" />
                   </nz-input-group>
                 </nz-form-control>
               </nz-form-item>
               <nz-form-item>
                 <nz-form-control nzErrorTip="Please input your Password!">
                   <nz-input-group nzPrefixIcon="lock">
-                    <input type="password" nz-input formControlName="password" placeholder="Password" />
+                    <input type="password" nz-input formControlName="password" placeholder="Sales Description" />
                   </nz-input-group>
                 </nz-form-control>
               </nz-form-item>
               <div nz-row class="login-form-margin">
               </div>
-              <button nz-button class="login-form-button login-form-margin" >Log in</button>
+              <button nz-button class="login-form-button login-form-margin" >Submit</button>
             </form>
           </ng-container>
         </nz-modal>

@@ -13,3 +13,11 @@ export const UPDATE_PRODUCT_ACTION = "[Product API] update product"
 
 export const updateProduct = createAction(UPDATE_PRODUCT_ACTION, props<{product:Product}>())
 
+export const ByIdinvokeProductsAPI = createAction(
+    "[Product API] ById invoke products Fetch API",
+)
+export const ByIdproductsFetchAPISuccess = createAction(
+    "[Product API] ById products fetch api success",
+    props<{productById:Product}>()
+)
+

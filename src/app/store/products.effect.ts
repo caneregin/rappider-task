@@ -3,7 +3,7 @@ import { Injectable } from "@angular/core";
 import { Actions, createEffect, ofType } from "@ngrx/effects";
 import { switchMap, map, pipe } from "rxjs";
 import { ProductsService } from "../products.service";
-import { invokeProductsAPI, productsFetchAPISuccess } from "./products.action";
+import { ByIdinvokeProductsAPI, ByIdproductsFetchAPISuccess, invokeProductsAPI, productsFetchAPISuccess } from "./products.action";
 
 @Injectable()
 export class ProductsEffects {
@@ -16,6 +16,16 @@ export class ProductsEffects {
                 return this.productService.get()
                     .pipe(
                         map((data) => productsFetchAPISuccess({ allProducts: data.products }))
+                    )
+            })
+        ))
+        ByIdloadAllProducts$ = createEffect(() =>
+        this.actions$.pipe(
+            ofType(ByIdinvokeProductsAPI),
+            switchMap(() => {
+                return this.productService.getById()
+                    .pipe(
+                        map((data) => ByIdproductsFetchAPISuccess({ productById: data }))
                     )
             })
         ))

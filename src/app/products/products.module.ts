@@ -1,4 +1,4 @@
-import { productReducer } from './../store/products.reducer';
+import { productReducer, productReducerById } from './../store/products.reducer';
 import { StoreModule } from '@ngrx/store';
 import { ProductComponent } from './../components/product/product.component';
 import { NgModule } from '@angular/core';
@@ -16,6 +16,7 @@ import { ProductsEffects } from '../store/products.effect';
     CommonModule,
     ProductsRoutingModule,
     StoreModule.forFeature("myproduct",productReducer),
+    StoreModule.forFeature("myproductId",productReducerById),
     EffectsModule.forFeature([ProductsEffects])
   ]
 })
