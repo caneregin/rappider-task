@@ -22,10 +22,6 @@ import { NzInputModule } from 'ng-zorro-antd/input';
 import { Routes } from '@angular/router';
 registerLocaleData(en);
 
-const appRoute:Routes=[
-  {path:"Components/product/:id",component:ProductComponent}
-]
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -48,7 +44,7 @@ const appRoute:Routes=[
     ReactiveFormsModule,
   ],
   providers: [
-    { provide: NZ_I18N, useValue: en_US }
+    { provide: NZ_I18N, useValue: en_US },ProductComponent
   ],
   bootstrap: [AppComponent]
 })

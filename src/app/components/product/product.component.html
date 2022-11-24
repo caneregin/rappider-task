@@ -7,6 +7,7 @@
       <th class="th-class">price</th>
       <th class="th-class">discountPercentage</th>
       <th class="th-class">rating</th>
+      <th class="th-class">stock</th>
       <th class="th-class">brand</th>
       <th class="th-class">category</th>
       <th class="th-class">thumbnail</th>
@@ -23,6 +24,7 @@
       <td>{{ product.price }}</td>
       <td>{{ product.discountPercentage }}</td>
       <td>{{ product.rating }}</td>
+      <td>{{ product.stock }}</td>
       <td>{{ product.brand }}</td>
       <td>{{ product.category }}</td>
       <td><img src="{{ product.thumbnail }}" /></td>
@@ -31,7 +33,10 @@
         <button nz-button nz-popover nzType="primary" nzPopoverTitle="Sales Description" nzPopoverContent="{{ product.salesDescription }}">{{ product.salesAmount }}</button>
         </td>
       <td>
-        <button (click)="selectedInput($event)" type="{{ product.id }}" nz-button (click)="showModal()"><span>{{ product.title }}</span></button>
+        <button nz-button (click)="showModal(product.id)">{{ product.title }}</button>
+      </td>
+      <td>
+        
       </td>
     </tr>
   </tbody>
@@ -43,16 +48,83 @@
             *ngFor="let product of products2$ | async">
               id:{{product.id}} title:{{product.title}}
               <nz-form-item>
-                <nz-form-control nzErrorTip="Please input your username!">
+                <nz-form-control nzErrorTip="Please input your id!">
                   <nz-input-group nzPrefixIcon="user">
-                    <input type="text" nz-input formControlName="userName" placeholder="Sales Amount" />
+                    <input type="text" nz-input formControlName="id" placeholder="id" value="{{product.id}}" />
+                  </nz-input-group>
+                </nz-form-control>
+              </nz-form-item><nz-form-item>
+                <nz-form-control nzErrorTip="Please input your title!">
+                  <nz-input-group nzPrefixIcon="user">
+                    <input type="text" nz-input formControlName="title" placeholder="title" value="{{product.title}}" />
+                  </nz-input-group>
+                </nz-form-control>
+              </nz-form-item><nz-form-item>
+                <nz-form-control nzErrorTip="Please input your description!">
+                  <nz-input-group nzPrefixIcon="user">
+                    <input type="text" nz-input formControlName="description" placeholder="description" value="{{product.description}}" />
+                  </nz-input-group>
+                </nz-form-control>
+              </nz-form-item><nz-form-item>
+                <nz-form-control nzErrorTip="Please input your price!">
+                  <nz-input-group nzPrefixIcon="user">
+                    <input type="text" nz-input formControlName="price" placeholder="price" value="{{product.price}}" />
+                  </nz-input-group>
+                </nz-form-control>
+              </nz-form-item><nz-form-item>
+                <nz-form-control nzErrorTip="Please input your discountPercentage!">
+                  <nz-input-group nzPrefixIcon="user">
+                    <input type="text" nz-input formControlName="discountPercentage" placeholder="discountPercentage" value="{{product.discountPercentage}}" />
+                  </nz-input-group>
+                </nz-form-control>
+              </nz-form-item><nz-form-item>
+                <nz-form-control nzErrorTip="Please input your rating!">
+                  <nz-input-group nzPrefixIcon="user">
+                    <input type="text" nz-input formControlName="rating" placeholder="rating" value="{{product.rating}}" />
+                  </nz-input-group>
+                </nz-form-control>
+              </nz-form-item><nz-form-item>
+                <nz-form-control nzErrorTip="Please input your stock!">
+                  <nz-input-group nzPrefixIcon="user">
+                    <input type="text" nz-input formControlName="stock" placeholder="stock" value="{{product.stock}}" />
+                  </nz-input-group>
+                </nz-form-control>
+              </nz-form-item><nz-form-item>
+                <nz-form-control nzErrorTip="Please input your brand!">
+                  <nz-input-group nzPrefixIcon="user">
+                    <input type="text" nz-input formControlName="brand" placeholder="brand" value="{{product.brand}}" />
+                  </nz-input-group>
+                </nz-form-control>
+              </nz-form-item><nz-form-item>
+                <nz-form-control nzErrorTip="Please input your category!">
+                  <nz-input-group nzPrefixIcon="user">
+                    <input type="text" nz-input formControlName="category" placeholder="category" value="{{product.category}}" />
+                  </nz-input-group>
+                </nz-form-control>
+              </nz-form-item><nz-form-item>
+                <nz-form-control nzErrorTip="Please input your thumbnail!">
+                  <nz-input-group nzPrefixIcon="user">
+                    <input type="text" nz-input formControlName="thumbnail" placeholder="thumbnail" value="{{ product.thumbnail }}" />
+                  </nz-input-group>
+                </nz-form-control>
+              </nz-form-item><nz-form-item>
+                <nz-form-control nzErrorTip="Please input your images!">
+                  <nz-input-group nzPrefixIcon="user">
+                    <input type="text" nz-input formControlName="images" placeholder="images" value="{{ product.images[0] }}" />
                   </nz-input-group>
                 </nz-form-control>
               </nz-form-item>
               <nz-form-item>
-                <nz-form-control nzErrorTip="Please input your Password!">
+                <nz-form-control nzErrorTip="Please input your salesAmount!">
+                  <nz-input-group nzPrefixIcon="user">
+                    <input type="text" nz-input formControlName="salesAmount" placeholder="salesAmount" />
+                  </nz-input-group>
+                </nz-form-control>
+              </nz-form-item>
+              <nz-form-item>
+                <nz-form-control nzErrorTip="Please input your salesDescription!">
                   <nz-input-group nzPrefixIcon="lock">
-                    <input type="password" nz-input formControlName="password" placeholder="Sales Description" />
+                    <input type="text" nz-input formControlName="salesDescription" placeholder="Sales Description" />
                   </nz-input-group>
                 </nz-form-control>
               </nz-form-item>

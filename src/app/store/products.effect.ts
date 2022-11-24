@@ -1,3 +1,4 @@
+import { ProductComponent } from './../components/product/product.component';
 import { state } from "@angular/animations";
 import { Injectable } from "@angular/core";
 import { Actions, createEffect, ofType } from "@ngrx/effects";
@@ -8,7 +9,8 @@ import { ByIdinvokeProductsAPI, ByIdproductsFetchAPISuccess, invokeProductsAPI, 
 @Injectable()
 export class ProductsEffects {
     constructor(private actions$: Actions,
-        private productService: ProductsService) { }
+        private productService: ProductsService,private productComponent: ProductComponent) { }
+
     loadAllProducts$ = createEffect(() =>
         this.actions$.pipe(
             ofType(invokeProductsAPI),
